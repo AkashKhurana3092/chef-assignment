@@ -51,7 +51,9 @@ Mongodb has set of recipes which will be executed as part of kitchen converge ie
 ***Resources Used and Details ***
 
 yum_repository: https://docs.chef.io/resources/yum_repository/
+
 package: https://docs.chef.io/resources/package/
+
 service: https://docs.chef.io/resources/service/
 
 ## Steps to test the cookbook
@@ -76,8 +78,11 @@ Mongodb has set of recipes which will be executed as part of kitchen converge ie
 ***Resources Used and Details ***
 
 windows_user_privilege : https://docs.chef.io/resources/windows_user_privilege/
+
 windows_security_policy : https://docs.chef.io/resources/windows_security_policy/
+
 registry_key : https://docs.chef.io/resources/registry_key/
+
 chef inspec: https://docs.chef.io/inspec/glossary/
 
 ## Steps to test the cookbook
