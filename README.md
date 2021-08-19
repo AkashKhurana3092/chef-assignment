@@ -9,7 +9,7 @@ Each cookbooks is configured to run its own set of action ie installing mongodb,
 In order to execute the cookbook, first clone it in your local machine by running command 
 ## git clone https://github.com/AkashKhurana3092/chef-assignment.git
 
-**Testing Tomcat_install
+##Testing Tomcat_install
 
 This cookbook is tested with kitchen utility ( for more details follow https://kitchen.ci/ )
 
