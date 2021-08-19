@@ -1,0 +1,30 @@
+---
+driver:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos-8
+    driver:
+      image: dokken/centos-8
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mongodb::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
