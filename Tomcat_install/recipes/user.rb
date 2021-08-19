@@ -1,5 +1,5 @@
 group node['tomcat']['group'] do
-    action :create
+  action :create
 end
 
 user 'tomcat' do
@@ -11,13 +11,13 @@ user 'tomcat' do
 end
 
 directory node['tomcat']['directory'] do
-    owner 'tomcat'
-     group 'tomcat'
-    action :create
-  end
+  owner 'tomcat'
+  group 'tomcat'
+  action :create
+end
 
 directory "#{node['tomcat']['directory']}/conf" do
-    mode '750'
-    group 'tomcat'
-    action :create
+  mode '750'
+  group 'tomcat'
+  action :create
 end
