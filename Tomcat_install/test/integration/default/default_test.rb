@@ -26,10 +26,6 @@ describe package('java-1.8.0-openjdk-devel') do
   it { should be_installed }
 end
 
-describe group('tomcat') do
-  it { should exist }
-end
-
 describe directory('/opt/tomcat') do
   it { should exist }
   its('group') { should eq 'tomcat' }
