@@ -9,7 +9,7 @@ Each cookbooks is configured to run its own set of action ie installing mongodb,
 In order to execute the cookbook, first clone it in your local machine by running command 
 ## git clone https://github.com/AkashKhurana3092/chef-assignment.git
 
-##Testing Tomcat_install
+ # Testing Tomcat_install
 
 This cookbook is tested with kitchen utility ( for more details follow https://kitchen.ci/ )
 
@@ -18,6 +18,7 @@ The tomcat cookbook is tested with dokken driver and image centos-8 ( before run
 Tomcat has set of recipes which will be executed as part of kitchen converge ie https://github.com/AkashKhurana3092/chef-assignment/tree/main/Tomcat_install/recipes
 
 ***Resources Used and Details ***
+
 remote_file : https://docs.chef.io/resources/remote_file/
 archive_file: https://docs.chef.io/resources/archive_file/
 bash : https://docs.chef.io/resources/bash/
@@ -34,7 +35,7 @@ service: https://docs.chef.io/resources/service/
 6) At the end please run "kitchen destroy" to remove the machine 
 
 
-**Testing mongodb
+# Testing mongodb
 
 This cookbook is tested with kitchen utility ( for more details follow https://kitchen.ci/ )
 
@@ -43,6 +44,7 @@ The mongodb cookbook is tested with dokken driver and image centos-8 ( before ru
 Mongodb has set of recipes which will be executed as part of kitchen converge ie ( https://github.com/AkashKhurana3092/chef-assignment/tree/main/mongodb)
 
 ***Resources Used and Details ***
+
 yum_repository: https://docs.chef.io/resources/yum_repository/
 package: https://docs.chef.io/resources/package/
 service: https://docs.chef.io/resources/service/
@@ -56,7 +58,7 @@ service: https://docs.chef.io/resources/service/
 6) At the end please run "kitchen destroy" to remove the machine 
 
 
-**Testing windows
+# Testing windows
 
 This cookbook is tested with kitchen utility ( for more details follow https://kitchen.ci/ )
 
@@ -67,6 +69,7 @@ The windows cookbook is tested with vagrant and virtualbox. As, there is no imag
 Mongodb has set of recipes which will be executed as part of kitchen converge ie ( https://github.com/AkashKhurana3092/chef-assignment/tree/main/windows)
 
 ***Resources Used and Details ***
+
 windows_user_privilege : https://docs.chef.io/resources/windows_user_privilege/
 windows_security_policy : https://docs.chef.io/resources/windows_security_policy/
 registry_key : https://docs.chef.io/resources/registry_key/
