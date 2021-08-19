@@ -20,10 +20,15 @@ Tomcat has set of recipes which will be executed as part of kitchen converge ie 
 ***Resources Used and Details ***
 
 remote_file : https://docs.chef.io/resources/remote_file/
+
 archive_file: https://docs.chef.io/resources/archive_file/
+
 bash : https://docs.chef.io/resources/bash/
+
 package: https://docs.chef.io/resources/package/
+
 file : https://docs.chef.io/resources/file/
+
 service: https://docs.chef.io/resources/service/
 
 ## Steps to test the cookbook
