@@ -1,39 +1,40 @@
-# InSpec test for recipe windows::default
+# # InSpec test for recipe windows::default
 
-# The Chef InSpec reference, with examples and extensive documentation, can be
-# found at https://docs.chef.io/inspec/resources/
+# # The Chef InSpec reference, with examples and extensive documentation, can be
+# # found at https://docs.chef.io/inspec/resources/
 
-control 'log-n_local_administrator_rule' do
-  allowed_principals = ['S-1-5-32-544']
-  describe security_policy.SeInteractiveLogonRight - allowed_principals do
-    it { should be_empty }
-  end
+## To Veify "Allow log on locally to Administrator" ##
+
+describe security_policy do
+  its('SeInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
 end
 
-control 'Remote_Desktop_Services_is_set_to_Administrators_Remote_Desktop_Users' do
-  allowed_principals = (['S-1-5-32-544'] + ['S-1-5-32-555'])
-  describe security_policy.SeRemoteInteractiveLogonRight - allowed_principals do
-    it { should be_empty }
-  end
+## To Verify "Allow log on through RDP to Admin & Remote Desktop User" ##
+
+describe security_policy do
+  its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] + ['S-1-5-32-555'] }
 end
 
-control 'CTRLALTDEL_is_set_to_Disabled' do
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-    it { should have_property 'DisableCAD' }
-    its('DisableCAD') { should cmp == 0 }
-  end
+## To verify "Disable Admin Account" ##
+
+describe security_policy do
+  its('EnableAdminAccount') { should eq 0 }
 end
 
-control 'NTP_Client_is_set_to_Enabled' do
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpClient') do
-    it { should have_property 'Enabled' }
-    its('Enabled') { should cmp == 1 }
-  end
+## To Verify CTRL+ALT+DEL is set to Disabled ##
+
+describe registry_key 'HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' do
+  its('DisableCAD') { should eq 0 }
 end
 
-control 'NTP_Server_is_set_to_Disabled' do
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpServer') do
-    it { should have_property 'Disabled' }
-    its('Disabled') { should cmp == 0 }
-  end
+## To Verify NTP Client is set to Enabled ##
+
+describe registry_key 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\W32time\\TimeProviders\\NtpClient' do
+  its('Enabled') { should eq 1 }
+end
+
+## To Verify NTP Server is set to Disabled ##
+
+describe registry_key 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\W32time\\TimeProviders\\NTPServer' do
+  its('Disabled') { should eq 0 }
 end

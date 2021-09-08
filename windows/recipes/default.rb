@@ -6,7 +6,7 @@
 
 windows_user_privilege 'Allow log on locally' do
   privilege 'SeInteractiveLogonRight'
-  users          ['BUILTIN\Administrators']
+  users         ['BUILTIN\Administrators']
   action         :set
 end
 
@@ -16,7 +16,8 @@ windows_user_privilege 'Remote interactive logon' do
   action         :set
 end
 
-windows_security_policy 'EnableAdminAccount' do
+windows_security_policy 'disable administrator' do
+  secoption 'EnableAdminAccount'
   secvalue '0'
   action :set
 end

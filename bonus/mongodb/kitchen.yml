@@ -20,7 +20,6 @@ platforms:
       volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-#platforms:
   - name: ubuntu-20.04
     driver:
       image: dokken/ubuntu-20.04

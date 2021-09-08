@@ -8,6 +8,7 @@ describe file('/etc/yum.repos.d/mongoDB.repo') do
 end
 
 describe service('mongod') do
+  it { should be_installed }
   it { should be_enabled }
   it { should be_running }
 end

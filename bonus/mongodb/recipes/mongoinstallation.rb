@@ -15,12 +15,12 @@ when 'ubuntu', 'debian'
 apt_update
 apt_package 'mongodb'
 
- bash "mongodb service" do
+ bash "mongodb" do
      code <<-EOH
      service mongodb enable
      service mongodb start
      EOH
-     not_if { File.exist?("/etc/init.d/mongodb") }
+     not_if {'ps -ef | grep -v grep | grep mongodb' == ''}
  end
 
 end

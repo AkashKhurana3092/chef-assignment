@@ -4,8 +4,8 @@ remote_file "#{Chef::Config[:file_cache_path]}/tomcat.tar.gz" do
 end
 
 archive_file "#{Chef::Config[:file_cache_path]}/tomcat.tar.gz" do
-  group "#{node['tomcat']['group']}"
-  owner "#{node['tomcat']['group']}"
+  group node['tomcat']['group']
+  owner node['tomcat']['group']
   mode '755'
   destination '/opt/apache'
   action :extract
