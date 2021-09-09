@@ -3,10 +3,8 @@
 # The Chef InSpec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec/resources/
 
-describe 'Tomcat Daemon' do
-  it 'is listening on port 8080' do
-    expect(port(8080)).to be_listening
-  end
+describe port(8080) do
+  it {should be_listening}
 end
 
 describe service('tomcat') do
@@ -32,5 +30,5 @@ describe directory('/opt/tomcat') do
 end
 
 describe http('http://127.0.0.1:8080') do
-  its('status') { should cmp 200 }
+  its('status') { should eq 200 }
 end

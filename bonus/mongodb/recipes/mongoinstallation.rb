@@ -3,7 +3,6 @@ when 'redhat', 'centos'
 
 package node['mongodb']['package'] do
     action :install
-    version '4.4.4'
 end
 
 service 'mongod' do
@@ -13,14 +12,15 @@ end
 when 'ubuntu', 'debian'
 
 apt_update
-apt_package 'mongodb'
 
- bash "mongodb" do
-     code <<-EOH
-     service mongodb enable
-     service mongodb start
-     EOH
-     not_if {'ps -ef | grep -v grep | grep mongodb' == ''}
- end
+package 'mongodb' do
+    action :install
+end
+
+service 'mongodb' do
+    provider Chef::Provider::Service::Init
+    start_command '/etc/init.d/mongodb start'
+    action :start
+end
 
 end

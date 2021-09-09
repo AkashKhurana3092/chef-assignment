@@ -16,7 +16,7 @@ bash 'extract file content' do
   cwd '/opt/apache/'
   code <<-EOH
   mv #{node['tomcat']['extract']}/* #{node['tomcat']['directory']}
-  chown tomcat:tomcat #{node['tomcat']['directory']}
+  chown -R tomcat:tomcat #{node['tomcat']['directory']}
   EOH
   not_if { Dir.exist?('/opt/tomcat/bin') }
 end
