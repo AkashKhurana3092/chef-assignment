@@ -1,10 +1,3 @@
-# file node['tomcat']['file']['service'] do
-#   owner 'tomcat'
-#   group 'tomcat'
-#   mode '0755'
-#   action :create
-# end
-
 template node['tomcat']['file']['service'] do
   source 'tomcat.service.erb'
   owner 'tomcat'
